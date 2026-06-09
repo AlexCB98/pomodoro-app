@@ -1,0 +1,6 @@
+FONT = ('Century Schoolbook', 100, 'bold')
+
+CRIMSON_RED = '#DB1A1A'
+SNOW_WHITE = '#FFF6F6'
+PASTEL_TURQUOISE = '#8CC7C4'
+DEEP_TEAL_BLUE = '#2C687B'
