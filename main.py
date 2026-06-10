@@ -15,6 +15,10 @@ def count_down(count):
         window.after(1000, count_down, count - 1)
     else:
         start_timer()
+        marks = ''
+        for _ in range(math.floor(reps/2)):
+            marks += '🗹'
+            canvas.itemconfig(check_mark, text= marks)
 
 def start_timer():
     global reps
@@ -49,7 +53,7 @@ timer_countdown = canvas.create_text(300, 325, text='00:00', font= FONT_COUNTDOW
 
 timer_title = canvas.create_text(300,230, text='Timer', font= FONT_TEXT, fill= PASTEL_TURQUOISE)
 
-canvas.create_text(300,430, text='🗹', font= FONT_TICK, fill= GREEN )
+check_mark = canvas.create_text(300,430, font= FONT_MARK, fill= GREEN )
 
 start_button = Button(canvas, text='Start', command= start_timer, font= FONT_BUTTON_START, fg= DEEP_TEAL_BLUE)
 start_button.place(x=180, y=410)
