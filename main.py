@@ -16,8 +16,14 @@ canvas.create_text(300, 325, text='00:00', font= FONT_COUNTDOWN)
 
 canvas.create_text(300,230, text='Timer', font= FONT_TEXT, fill= PASTEL_TURQUOISE)
 
+canvas.create_text(300,430, text='🗹', font= FONT_TICK, fill= GREEN )
+
 start_button = Button(canvas, text='Start', font=FONT_BUTTON_START, fg= DEEP_TEAL_BLUE)
 start_button.place(x=180, y=410)
+
+reset_button = Button(canvas, text='Reset', font=FONT_BUTTON_START, fg= DEEP_TEAL_BLUE)
+reset_button.place(x=370, y=410)
+
 
 
 canvas.pack()
