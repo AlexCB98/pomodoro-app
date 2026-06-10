@@ -3,6 +3,7 @@ from constants import *
 import math
 
 reps = 0
+timer = None
 
 def count_down(count):
     count_min = math.floor(count / 60 )
@@ -12,13 +13,14 @@ def count_down(count):
 
     canvas.itemconfig(timer_countdown, text=f'{count_min}:{count_sec}')
     if count > 0:
-        window.after(1000, count_down, count - 1)
+        global timer
+        timer = window.after(1000, count_down, count - 1)
     else:
         start_timer()
         marks = ''
         for _ in range(math.floor(reps/2)):
             marks += '🗹'
-            canvas.itemconfig(check_mark, text= marks)
+        canvas.itemconfig(check_mark, text= marks)
 
 def start_timer():
     global reps
@@ -37,6 +39,18 @@ def start_timer():
     else:
         canvas.itemconfig(timer_title, text='Work time')
         count_down(work_time)
+
+def reset_timer():
+    global reps, timer
+
+    if timer is not None:
+        window.after_cancel(timer)
+        timer = None
+
+    canvas.itemconfig(timer_countdown, text= '00:00')
+    canvas.itemconfig(timer_title, text= 'Timer')
+    canvas.itemconfig(check_mark, text= '')
+    reps = 0
 
 
 window = Tk()
@@ -58,7 +72,7 @@ check_mark = canvas.create_text(300,430, font= FONT_MARK, fill= GREEN )
 start_button = Button(canvas, text='Start', command= start_timer, font= FONT_BUTTON_START, fg= DEEP_TEAL_BLUE)
 start_button.place(x=180, y=410)
 
-reset_button = Button(canvas, text='Reset', font= FONT_BUTTON_START, fg= DEEP_TEAL_BLUE)
+reset_button = Button(canvas, text='Reset', command= reset_timer, font= FONT_BUTTON_START, fg= DEEP_TEAL_BLUE)
 reset_button.place(x=370, y=410)
 
 
