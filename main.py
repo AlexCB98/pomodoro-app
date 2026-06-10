@@ -24,6 +24,7 @@ def count_down(count):
 
 def start_timer():
     global reps
+    start_button.config(state=DISABLED)
     reps += 1
 
     work_time   = WORK_MIN * 60
@@ -50,6 +51,7 @@ def reset_timer():
     canvas.itemconfig(timer_countdown, text= '00:00')
     canvas.itemconfig(timer_title, text= 'Timer')
     canvas.itemconfig(check_mark, text= '')
+    start_button.config(state=NORMAL)
     reps = 0
 
 
